@@ -50,7 +50,6 @@ body .search_movie {
 }
 body .search_movie #search_input {
   font-family: "inter", sans-serif;
-  font-style: none;
   border: none;
   width: 228px;
   height: 44px;
