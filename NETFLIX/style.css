@@ -74,6 +74,7 @@ body .search_movie {
 body .search_movie #search_input {
   font-family: "Inter", sans-serif;
   border: none;
+  outline: none;
   width: 228px;
   height: 44px;
   padding-left: 18px;
@@ -186,10 +187,12 @@ body .swiper .swiper-button-next {
 body .swiper .swiper-button-next {
   background-image: url("./image_BeMovie/right-arrow.svg") !important;
   right: -50px;
+  top: 220px;
 }
 body .swiper .swiper-button-prev {
   background-image: url("./image_BeMovie/left-arrow.svg") !important;
   left: -50px;
+  top: 220px;
 }
 body .swiper .swiper-button-next::after,
 body .swiper .swiper-button-prev::after {
@@ -234,5 +237,158 @@ body .footer .back-right {
   font-size: 14px;
   font-weight: 300;
   line-height: 16.79px;
-  color: #B8B8B8;
+  color: #b8b8b8;
+}
+body .overlay_modal {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .modal_Login {
+  display: none;
+  width: 410px;
+  height: 610px;
+  background-color: black;
+  color: white;
+}
+body .modal_Login .close {
+  position: relative;
+  top: 15px;
+  left: 15px;
+}
+body .modal_Login .signup_login {
+  display: flex;
+  justify-content: center;
+  margin-top: 66px;
+  margin-bottom: 54px;
+  cursor: pointer;
+}
+body .modal_Login .signup_login .signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Inria Sans", sans-serif;
+  border: 1px solid white;
+  width: 146px;
+  height: 54px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28.78px;
+  letter-spacing: 0.03em;
+  border-radius: 8px 0px 0px 8px;
+}
+body .modal_Login .signup_login .login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Inria Sans", sans-serif;
+  background-color: #cc0000;
+  width: 146px;
+  height: 54px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28.78px;
+  letter-spacing: 0.03em;
+  border-radius: 0px 8px 8px 0px;
+}
+body .modal_Login .input {
+  margin: auto;
+  width: 288px;
+}
+body .modal_Login .input #input_username {
+  width: 288px;
+  height: 54px;
+  padding-left: 20px;
+  margin-bottom: 25px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.36px;
+}
+body .modal_Login .input .password #input_password {
+  width: 288px;
+  height: 54px;
+  padding-left: 20px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.36px;
+}
+body .modal_Login .input .password .coche {
+  display: flex;
+  width: 288px;
+  height: 41px;
+  padding-top: 25px;
+}
+body .modal_Login .input .password .coche p {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.36px;
+  padding-left: 9px;
+}
+body .modal_Login .input .password .coche input {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+body .modal_Login .container_button_login {
+  display: flex;
+  justify-content: center;
+  margin-top: 46px;
+  cursor: pointer;
+}
+body .modal_Login .container_button_login .button_login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 288px;
+  height: 47px;
+  color: white;
+  font-family: "Inria Sans", sans-serif;
+  background-color: #cc0000;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23.98px;
+  letter-spacing: 0.03em;
+}
+body .modal_Login .forgot_password {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.36px;
+  margin-left: 63px;
+  margin-top: 30px;
+  color: #cc0000;
+  cursor: pointer;
+}
+body .modal_Login .not_a_member {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.36px;
+  margin-left: 63px;
+  margin-top: 19px;
+  color: white;
+}
+body .modal_Login .not_a_member span {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.36px;
+  color: #cc0000;
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */

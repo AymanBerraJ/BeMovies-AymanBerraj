@@ -6,13 +6,23 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <title>BeMovies</title>
   </head>
 
   <body>
+    <!-- Header -->
     <div class="header">
       <div class="logo"><span id="logo_red">BE</span>MOVIES</div>
       <div class="nav">
@@ -24,14 +34,15 @@
       </div>
     </div>
 
+    <!-- Search Input -->
     <div class="search_movie">
       <input id="search_input" type="text" placeholder="Enter the movie" />
       <div id="button_search">
         <img src="image_BeMovie/fleche_search.png" alt="" />
       </div>
     </div>
-  
-    <!-- Swiper Results-->
+
+    <!-- Swiper Research Results-->
     <div class="genre-swiper-container">
       <p class="genre-p">Results of " "</p>
       <div class="swiper mySwiper genre-swiper">
@@ -67,6 +78,7 @@
       </div>
     </div>
 
+    <!-- Les Catégories -->
     <section class="genre-container">
       <div class="genre-section">
         <h3 class="genre-title">Movies by genre</h3>
@@ -83,7 +95,7 @@
       </div>
       <div class="barre"></div>
 
-      <!-- Swiper Results-->
+      <!-- Swiper Genre / Catégorie -->
       <div class="genre-swiper-container">
         <p class="genre-p">Genre</p>
         <div class="swiper mySwiper genre-swiper">
@@ -115,7 +127,35 @@
         <div class="back-right">&copy;2023 - All rights reserved</div>
       </div>
     </footer>
-    
+
+    <!-- Modal Login / Sign Up -->
+    <div class="overlay_modal"></div>
+      <div class="modal_Login">
+        <div class="close">
+          <img id="close_button" src="image_BeMovie/close.png" alt="" />
+        </div>
+        <div class="signup_login">
+          <div class="signup">SIGN UP</div>
+          <div class="login">LOGIN</div>
+        </div>
+        <div class="input">
+          <input type="text" id="input_username" placeholder="Username" />
+          <div class="password">
+            <input type="password" id="input_password" placeholder="Password" />
+            <div class="coche">
+              <input type="checkbox" />
+              <p>Remember me</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="container_button_login">
+          <div class="button_login">LOGIN</div>
+        </div>
+        <p class="forgot_password">I forgot my password</p>
+        <p class="not_a_member">Not a member yet ? <span>Sign up</span></p>
+      </div>
+
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="app.js"></script>
