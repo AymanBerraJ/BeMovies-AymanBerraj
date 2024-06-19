@@ -14,7 +14,7 @@ $inter: "Inter", sans-serif;
 body {
   background-color: $colorBody;
   height: 100%;
-  .genre-title{
+  .genre-title {
     font-family: $inter;
     color: white;
     text-align: center;
@@ -113,7 +113,7 @@ body {
 
   // Genre container
 
-  .first_container{
+  .first_container {
     margin-bottom: 95px;
   }
   .genre-swiper-container {
@@ -151,7 +151,7 @@ body {
         margin: 0 auto;
         width: 600px;
         gap: 29px;
-        
+
         .genre-list-item {
           font-family: $inter;
           color: white;
@@ -242,6 +242,53 @@ body {
     .swiper-button-next::after,
     .swiper-button-prev::after {
       content: "";
+    }
+  }
+
+  .footer {
+    font-family: $inria;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $colorTopBot;
+    width: 100%;
+    height: 186px;
+    padding: 0 15%;
+    margin-top: 110px;
+
+    .logo {
+      color: white;
+      font-size: 36px;
+      font-weight: 700;
+      cursor: pointer;
+
+      #logo_red {
+        color: $colorRed;
+      }
+    }
+
+    .nav {
+      color: white;
+      display: flex;
+      gap: 29px;
+
+      p {
+        font-family: $inria;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+
+        &:hover {
+          color: $colorRed;
+        }
+      }
+    }
+    .back-right {
+      font-family: $inter;
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 16.79px;
+      color: #B8B8B8;
     }
   }
 }

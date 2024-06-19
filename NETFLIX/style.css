@@ -194,4 +194,45 @@ body .swiper .swiper-button-prev {
 body .swiper .swiper-button-next::after,
 body .swiper .swiper-button-prev::after {
   content: "";
+}
+body .footer {
+  font-family: "Inria Sans", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #141517;
+  width: 100%;
+  height: 186px;
+  padding: 0 15%;
+  margin-top: 110px;
+}
+body .footer .logo {
+  color: white;
+  font-size: 36px;
+  font-weight: 700;
+  cursor: pointer;
+}
+body .footer .logo #logo_red {
+  color: #cc0000;
+}
+body .footer .nav {
+  color: white;
+  display: flex;
+  gap: 29px;
+}
+body .footer .nav p {
+  font-family: "Inria Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+body .footer .nav p:hover {
+  color: #cc0000;
+}
+body .footer .back-right {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 16.79px;
+  color: #B8B8B8;
 }/*# sourceMappingURL=style.css.map */
