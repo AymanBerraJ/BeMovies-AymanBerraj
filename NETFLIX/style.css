@@ -17,13 +17,7 @@ body .genre-title {
   line-height: 19.36px;
   padding-top: 60px;
 }
-body .genre-p {
-  color: white;
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  padding-bottom: 10px;
-}
+body .genre-p,
 body .genre-L {
   color: white;
   font-family: "Inter", sans-serif;
@@ -98,7 +92,12 @@ body .search_movie #button_search {
 body .search_movie #button_search:hover {
   background-color: #8b0000;
 }
-body .genre-swiper-container {
+body .results_search {
+  display: none;
+}
+body .genre-swiper-container,
+body .results-swiper-container,
+body .last-releases-swiper-container {
   height: 350px;
   max-width: 1075px;
   margin: 0px auto;
@@ -145,36 +144,86 @@ body .genre-container .barre {
   margin: 0px 243px;
   margin-bottom: 29px;
 }
-body .genre-container .genre-swiper-container {
-  margin-top: 20px;
-}
-body .results-swiper-container,
-body .last-releases-swiper-container,
-body .genre-swiper-container {
-  height: 350px;
-  max-width: 1075px;
-  margin: 0px auto;
-  position: relative;
-}
 body .swiper {
   position: static;
   width: 100%;
   height: 100%;
 }
 body .swiper .swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
 }
 body .swiper .swiper-slide img {
   display: block;
   width: 100%;
+  height: auto;
+  transition: opacity 0.3s ease-in-out;
+}
+body .swiper .swiper-slide:hover .hover-content {
+  opacity: 1;
+}
+body .swiper .hover-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+body .swiper .hover-content .movie-title {
+  color: #ffffff;
+  font-size: 20px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  line-height: 24.2px;
+}
+body .swiper .hover-content .movie-year {
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24.2px;
+  text-align: center;
+  color: #B0B0B0;
+  margin: 5px 0;
+  padding-top: 23px;
+}
+body .swiper .hover-content .movie-genres {
+  color: #ffffff;
+  font-size: 14px;
+  margin: 5px 0;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  line-height: 16.94px;
+  padding-top: 23px;
+}
+body .swiper .hover-content .star-rating {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+body .swiper .hover-content .star-rating .star {
+  width: 35px;
+  height: 40px;
+  margin-right: 5px;
+  padding-bottom: 10px;
+}
+body .swiper .hover-content .star-rating span {
+  color: #cc0000;
+  font-family: "Inter", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 38.73px;
+  padding-right: 5px;
 }
 body .swiper .swiper-button-prev,
 body .swiper .swiper-button-next {
@@ -317,6 +366,7 @@ body .modal_Login .input .password #input_password {
   width: 288px;
   height: 54px;
   padding-left: 20px;
+  margin-bottom: 25px;
   border-radius: 8px;
   border: none;
   outline: none;
@@ -325,71 +375,12 @@ body .modal_Login .input .password #input_password {
   font-weight: 400;
   line-height: 19.36px;
 }
-body .modal_Login .input .password .coche {
-  display: flex;
-  width: 288px;
-  height: 41px;
-  padding-top: 25px;
-}
-body .modal_Login .input .password .coche p {
+body .modal_Login .input .password #forgot_password {
   font-family: "Inter", sans-serif;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 400;
-  line-height: 19.36px;
-  padding-left: 9px;
-}
-body .modal_Login .input .password .coche input {
-  width: 18px;
-  height: 18px;
-  border-radius: 4px;
-  border: none;
+  line-height: 14.52px;
+  margin-left: 149px;
   cursor: pointer;
-}
-body .modal_Login .container_button_login {
-  display: flex;
-  justify-content: center;
-  margin-top: 46px;
-  cursor: pointer;
-}
-body .modal_Login .container_button_login .button_login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 288px;
-  height: 47px;
-  color: white;
-  font-family: "Inria Sans", sans-serif;
-  background-color: #cc0000;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 23.98px;
-  letter-spacing: 0.03em;
-}
-body .modal_Login .forgot_password {
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 19.36px;
-  margin-left: 63px;
-  margin-top: 30px;
   color: #cc0000;
-  cursor: pointer;
-}
-body .modal_Login .not_a_member {
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 19.36px;
-  margin-left: 63px;
-  margin-top: 19px;
-  color: white;
-}
-body .modal_Login .not_a_member span {
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 19.36px;
-  color: #cc0000;
-  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */
