@@ -64,8 +64,10 @@ body {
       display: flex;
       gap: 29px;
 
-      p {
+      a {
         font-family: $inria;
+        text-decoration: none;
+        color: white;
         font-size: 14px;
         font-weight: 700;
         cursor: pointer;
@@ -114,8 +116,8 @@ body {
 
   // Genre container
 
-  .first_container {
-    margin-bottom: 95px;
+  .results_search{
+    // display: none;
   }
   .genre-swiper-container {
     height: 350px;

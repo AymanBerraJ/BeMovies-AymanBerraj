@@ -56,13 +56,15 @@ body .header .nav {
   display: flex;
   gap: 29px;
 }
-body .header .nav p {
+body .header .nav a {
   font-family: "Inria Sans", sans-serif;
+  text-decoration: none;
+  color: white;
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
 }
-body .header .nav p:hover {
+body .header .nav a:hover {
   color: #cc0000;
 }
 body .search_movie {
@@ -95,9 +97,6 @@ body .search_movie #button_search {
 }
 body .search_movie #button_search:hover {
   background-color: #8b0000;
-}
-body .first_container {
-  margin-bottom: 95px;
 }
 body .genre-swiper-container {
   height: 350px;
