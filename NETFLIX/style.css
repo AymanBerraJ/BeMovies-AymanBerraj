@@ -6,6 +6,107 @@
 
 body {
   background-color: #191b20;
+  height: 100%;
+  /*
+    .search_movie {
+      display: flex;
+      justify-content: center;
+      margin-top: 73px;
+
+      #search_input {
+        font-family: $inter;
+        border: none;
+        width: 228px;
+        height: 44px;
+        padding-left: 18px;
+        font-size: 16px;
+        border-radius: 8px 0 0 8px;
+        box-shadow: 4px 8px 20px 0px rgba(0, 0, 0, 0.1);
+      }
+
+      #button_search {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $colorRed;
+        width: 44px;
+        height: 44px;
+        cursor: pointer;
+        box-shadow: 4px 8px 20px 0px rgba(0, 0, 0, 0.1);
+        border-radius: 0 8px 8px 0;
+
+        &:hover {
+          background-color: $colorDarkRed;
+        }
+      }
+    }
+
+    .results_search {
+      max-width: 1075px;
+      margin: 61px auto 95px auto;
+      position: relative;
+
+      P {
+        font-family: $inter;
+        color: white;
+        font-size: 16px;
+        padding-bottom: 10px;
+      }
+
+      .swiper-container-wrapper {
+        position: relative;
+        width: 1075px;
+        margin: 0 auto;
+        overflow: visible;
+      }
+
+      .swiper {
+        width: 100%;
+        height: 350px;
+        position: relative;
+      }
+
+      .swiper-slide {
+        text-align: center;
+        background: #fff;
+
+        img {
+          display: block;
+          width: 350px;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 44px;
+        height: 44px;
+        cursor: pointer;
+        z-index: 10;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .swiper-button-next {
+        background-image: url("./image_BeMovie/next_swiper.png");
+        right: -60px;
+      }
+
+      .swiper-button-prev {
+        background-image: url("./image_BeMovie/before_swiper.png");
+        left: -60px;
+      }
+
+      .swiper-button-next::after,
+      .swiper-button-prev::after {
+        display: none;
+      }
+    }
+  }*/
 }
 body .header {
   font-family: "Inria Sans", sans-serif;
@@ -13,7 +114,7 @@ body .header {
   justify-content: space-between;
   align-items: center;
   background-color: #141517;
-  max-width: 100%;
+  width: 100%;
   height: 100px;
   padding: 0 15%;
 }
@@ -21,7 +122,6 @@ body .header .logo {
   color: white;
   font-size: 36px;
   font-weight: 700;
-  line-height: 43.16px;
   cursor: pointer;
 }
 body .header .logo #logo_red {
@@ -36,54 +136,106 @@ body .header .nav p {
   font-family: "Inria Sans", sans-serif;
   font-size: 14px;
   font-weight: 700;
-  line-height: 16.79px;
-  letter-spacing: 0.03em;
   cursor: pointer;
 }
 body .header .nav p:hover {
   color: #cc0000;
 }
-body .search_movie {
+body .genre-swiper-container {
+  height: 350px;
+  max-width: 1075px;
+  margin: 0px auto;
+  position: relative;
+}
+body .genre-container {
+  max-width: 1075px;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+body .genre-container .genre-title {
+  color: white;
+  text-align: center;
+}
+body .genre-container .genre-p {
+  margin: 10px;
+}
+body .genre-container hr {
+  color: white;
+  width: 600px;
+  margin: 0 auto;
+}
+body .genre-container .genre-list-div {
+  margin: 0 auto;
+  max-width: 700px;
   display: flex;
-  justify-content: center;
-  margin-top: 73px;
+  align-items: center;
+  margin-top: 45px;
+  margin-bottom: 25px;
 }
-body .search_movie #search_input {
-  font-family: "inter", sans-serif;
-  font-style: none;
-  border: none;
-  width: 228px;
-  height: 44px;
-  padding-left: 18px;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 19.36px;
-  border-radius: 8px 0px 0px 8px;
-  box-shadow: 4px 8px 20px 0px;
+body .genre-container .genre-list-div .genre-list {
+  display: flex;
+  flex-direction: row;
+  gap: 35px;
 }
-body .search_movie #button_search {
+body .genre-container .genre-list-div .genre-list .genre-list-item {
+  border-radius: 8px;
+  padding: 7px 9px;
+  color: white;
+  cursor: pointer;
+}
+body .genre-container .genre-list-div .genre-list .selected {
+  background-color: red;
+}
+body .genre-container .genre-list-div .genre-list .selected:hover {
+  background-color: red;
+}
+body .genre-container .genre-swiper-container {
+  margin-top: 20px;
+}
+body .results-swiper-container,
+body .last-releases-swiper-container,
+body .genre-swiper-container {
+  height: 350px;
+  max-width: 1075px;
+  margin: 0px auto;
+  position: relative;
+}
+body .swiper {
+  position: static;
+  width: 100%;
+  height: 100%;
+}
+body .swiper .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #cc0000;
-  width: 44px;
-  height: 44px;
-  cursor: pointer;
-  box-shadow: 4px 8px 20px 0px;
-  border-radius: 0px 8px 8px 0px;
 }
-body .search_movie #button_search:hover {
-  background-color: #8b0000;
-  height: 45px;
-  width: 45px;
+body .swiper .swiper-slide .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
-body .results_search {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  -moz-column-gap: 19px;
-       column-gap: 19px;
-  max-width: 1075px;
-  height: 380px;
-  margin: 61px auto 95px auto;
+body .swiper .swiper-button-prev,
+body .swiper .swiper-button-next {
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+}
+body .swiper .swiper-button-next {
+  background-image: url("./image_BeMovie/right-arrow.svg") !important;
+  right: -50px;
+}
+body .swiper .swiper-button-prev {
+  background-image: url("./image_BeMovie/left-arrow.svg") !important;
+  left: -50px;
+}
+body .swiper .swiper-button-next::after,
+body .swiper .swiper-button-prev::after {
+  content: "";
 }/*# sourceMappingURL=style.css.map */

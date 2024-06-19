@@ -3,7 +3,8 @@ $colorTopBot: #141517;
 $colorRed: #cc0000;
 $colorDarkRed: #8b0000;
 $inria: "Inria Sans", sans-serif;
-$inter: "inter", sans-serif;
+$inter: "Inter", sans-serif;
+
 * {
   margin: 0;
   padding: 0;
@@ -12,14 +13,15 @@ $inter: "inter", sans-serif;
 
 body {
   background-color: $colorBody;
-  // header
+  height: 100%;
+
   .header {
     font-family: $inria;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #141517;
-    max-width: 100%;
+    background-color: $colorTopBot;
+    width: 100%;
     height: 100px;
     padding: 0 15%;
 
@@ -27,23 +29,22 @@ body {
       color: white;
       font-size: 36px;
       font-weight: 700;
-      line-height: 43.16px;
       cursor: pointer;
 
       #logo_red {
         color: $colorRed;
       }
     }
+
     .nav {
       color: white;
       display: flex;
       gap: 29px;
+
       p {
         font-family: $inria;
         font-size: 14px;
         font-weight: 700;
-        line-height: 16.79px;
-        letter-spacing: 0.03em;
         cursor: pointer;
 
         &:hover {
@@ -52,7 +53,7 @@ body {
       }
     }
   }
-  // Search avec Bouton rouche
+/*
   .search_movie {
     display: flex;
     justify-content: center;
@@ -60,17 +61,15 @@ body {
 
     #search_input {
       font-family: $inter;
-      font-style: none;
       border: none;
       width: 228px;
       height: 44px;
       padding-left: 18px;
       font-size: 16px;
-      font-weight: 400;
-      line-height: 19.36px;
-      border-radius: 8px 0px 0px 8px;
-      box-shadow: 4px 8px 20px 0px;
+      border-radius: 8px 0 0 8px;
+      box-shadow: 4px 8px 20px 0px rgba(0, 0, 0, 0.1);
     }
+
     #button_search {
       display: flex;
       justify-content: center;
@@ -79,25 +78,203 @@ body {
       width: 44px;
       height: 44px;
       cursor: pointer;
-      box-shadow: 4px 8px 20px 0px;
-      border-radius: 0px 8px 8px 0px;
+      box-shadow: 4px 8px 20px 0px rgba(0, 0, 0, 0.1);
+      border-radius: 0 8px 8px 0;
 
       &:hover {
         background-color: $colorDarkRed;
-        height: 45px;
-        width: 45px;
       }
     }
   }
 
-  // Resultat / First Swipper
   .results_search {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-    column-gap: 19px;
     max-width: 1075px;
-    height: 380px;
     margin: 61px auto 95px auto;
+    position: relative;
+
+    P {
+      font-family: $inter;
+      color: white;
+      font-size: 16px;
+      padding-bottom: 10px;
+    }
+
+    .swiper-container-wrapper {
+      position: relative;
+      width: 1075px;
+      margin: 0 auto;
+      overflow: visible;
+    }
+
+    .swiper {
+      width: 100%;
+      height: 350px;
+      position: relative;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      background: #fff;
+
+      img {
+        display: block;
+        width: 350px;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      z-index: 10;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .swiper-button-next {
+      background-image: url("./image_BeMovie/next_swiper.png");
+      right: -60px;
+    }
+
+    .swiper-button-prev {
+      background-image: url("./image_BeMovie/before_swiper.png");
+      left: -60px;
+    }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+      display: none;
+    }
   }
+}*/
+
+//Genre container
+.genre-swiper-container {
+    height: 350px;
+    max-width: 1075px;
+    margin: 0px auto;
+    position: relative;
+}
+.genre-container {
+    max-width: 1075px;
+    margin: 0 auto;
+    margin-top: 100px;
+
+    .genre-title {
+        color: white;
+        text-align: center;
+    }
+
+    .genre-p {
+        margin: 10px;
+    }
+
+    hr {
+        color: white;
+        width: 600px;
+        margin: 0 auto;
+    }
+
+    .genre-list-div {
+        margin: 0 auto;
+        max-width: 700px;
+        display: flex;
+        align-items: center;
+        margin-top: 45px;
+        margin-bottom: 25px;
+
+        .genre-list {
+            display: flex;
+            flex-direction: row;
+            gap: 35px;
+
+            .genre-list-item {
+                border-radius: 8px;
+                padding: 7px 9px;
+                color: white;
+                //background-color: $mainPageColor;
+                cursor: pointer;
+
+                &:hover {
+                    //background-color: $secondaryPageColor;
+                }
+            }
+
+            .selected {
+                background-color: red;
+
+                &:hover {
+                    background-color: red;
+                }
+            }
+        }
+    }
+
+    .genre-swiper-container {
+        margin-top: 20px;
+    }
+}
+
+
+//Swiper results of search 
+.results-swiper-container,
+.last-releases-swiper-container,
+.genre-swiper-container {
+    height: 350px;
+    max-width: 1075px;
+    margin: 0px auto;
+    position: relative;
+}
+
+.swiper {
+    position: static;
+    width: 100%;
+    height: 100%;
+
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 20px;
+        height: 20px;
+    }
+
+    .swiper-button-next {
+        background-image: url("./image_BeMovie/right-arrow.svg") !important;
+        right: -50px;
+    }
+
+    .swiper-button-prev {
+        background-image: url("./image_BeMovie/left-arrow.svg") !important;
+        left: -50px;
+    }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+        content: '';
+    }
+}
+
 }
