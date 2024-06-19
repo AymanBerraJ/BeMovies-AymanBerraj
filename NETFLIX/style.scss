@@ -268,8 +268,10 @@ body {
       display: flex;
       gap: 29px;
 
-      p {
+      a {
         font-family: $inria;
+        color: white;
+        text-decoration: none;
         font-size: 14px;
         font-weight: 700;
         cursor: pointer;

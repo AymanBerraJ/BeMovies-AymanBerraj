@@ -222,13 +222,15 @@ body .footer .nav {
   display: flex;
   gap: 29px;
 }
-body .footer .nav p {
+body .footer .nav a {
   font-family: "Inria Sans", sans-serif;
+  color: white;
+  text-decoration: none;
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
 }
-body .footer .nav p:hover {
+body .footer .nav a:hover {
   color: #cc0000;
 }
 body .footer .back-right {
