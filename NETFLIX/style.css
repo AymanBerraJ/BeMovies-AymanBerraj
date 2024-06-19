@@ -7,106 +7,30 @@
 body {
   background-color: #191b20;
   height: 100%;
-  /*
-    .search_movie {
-      display: flex;
-      justify-content: center;
-      margin-top: 73px;
-
-      #search_input {
-        font-family: $inter;
-        border: none;
-        width: 228px;
-        height: 44px;
-        padding-left: 18px;
-        font-size: 16px;
-        border-radius: 8px 0 0 8px;
-        box-shadow: 4px 8px 20px 0px rgba(0, 0, 0, 0.1);
-      }
-
-      #button_search {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: $colorRed;
-        width: 44px;
-        height: 44px;
-        cursor: pointer;
-        box-shadow: 4px 8px 20px 0px rgba(0, 0, 0, 0.1);
-        border-radius: 0 8px 8px 0;
-
-        &:hover {
-          background-color: $colorDarkRed;
-        }
-      }
-    }
-
-    .results_search {
-      max-width: 1075px;
-      margin: 61px auto 95px auto;
-      position: relative;
-
-      P {
-        font-family: $inter;
-        color: white;
-        font-size: 16px;
-        padding-bottom: 10px;
-      }
-
-      .swiper-container-wrapper {
-        position: relative;
-        width: 1075px;
-        margin: 0 auto;
-        overflow: visible;
-      }
-
-      .swiper {
-        width: 100%;
-        height: 350px;
-        position: relative;
-      }
-
-      .swiper-slide {
-        text-align: center;
-        background: #fff;
-
-        img {
-          display: block;
-          width: 350px;
-          height: 100%;
-          object-fit: cover;
-        }
-      }
-
-      .swiper-button-next,
-      .swiper-button-prev {
-        background-size: contain;
-        background-repeat: no-repeat;
-        width: 44px;
-        height: 44px;
-        cursor: pointer;
-        z-index: 10;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-
-      .swiper-button-next {
-        background-image: url("./image_BeMovie/next_swiper.png");
-        right: -60px;
-      }
-
-      .swiper-button-prev {
-        background-image: url("./image_BeMovie/before_swiper.png");
-        left: -60px;
-      }
-
-      .swiper-button-next::after,
-      .swiper-button-prev::after {
-        display: none;
-      }
-    }
-  }*/
+}
+body .genre-title {
+  font-family: "Inter", sans-serif;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.36px;
+  padding-top: 60px;
+}
+body .genre-p {
+  color: white;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding-bottom: 10px;
+}
+body .genre-L {
+  color: white;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding-bottom: 10px;
+  margin-top: 95px;
 }
 body .header {
   font-family: "Inria Sans", sans-serif;
@@ -141,6 +65,39 @@ body .header .nav p {
 body .header .nav p:hover {
   color: #cc0000;
 }
+body .search_movie {
+  display: flex;
+  justify-content: center;
+  margin-top: 73px;
+  margin-bottom: 61px;
+}
+body .search_movie #search_input {
+  font-family: "Inter", sans-serif;
+  border: none;
+  width: 228px;
+  height: 44px;
+  padding-left: 18px;
+  font-size: 16px;
+  border-radius: 8px 0px 0px 8px;
+  box-shadow: 4px 8px 20px 0px rgba(0, 0, 0, 0.1);
+}
+body .search_movie #button_search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #cc0000;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  box-shadow: 4px 8px 20px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 0 8px 8px 0;
+}
+body .search_movie #button_search:hover {
+  background-color: #8b0000;
+}
+body .first_container {
+  margin-bottom: 95px;
+}
 body .genre-swiper-container {
   height: 350px;
   max-width: 1075px;
@@ -151,18 +108,6 @@ body .genre-container {
   max-width: 1075px;
   margin: 0 auto;
   margin-top: 100px;
-}
-body .genre-container .genre-title {
-  color: white;
-  text-align: center;
-}
-body .genre-container .genre-p {
-  margin: 10px;
-}
-body .genre-container hr {
-  color: white;
-  width: 600px;
-  margin: 0 auto;
 }
 body .genre-container .genre-list-div {
   margin: 0 auto;
@@ -175,9 +120,47 @@ body .genre-container .genre-list-div {
 body .genre-container .genre-list-div .genre-list {
   display: flex;
   flex-direction: row;
-  gap: 35px;
+  margin: 0 auto;
+  width: 600px;
+  gap: 29px;
 }
-
+body .genre-container .genre-list-div .genre-list .genre-list-item {
+  font-family: "Inter", sans-serif;
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.36px;
+  list-style: none;
+  padding: 7px 8px;
+  cursor: pointer;
+}
+body .genre-container .genre-list-div .genre-list .genre-list-item:hover {
+  background-color: #cc0000;
+}
+body .genre-container .barre {
+  width: 599px;
+  height: 2px;
+  background-color: white;
+  margin: 0px 243px;
+  margin-bottom: 29px;
+}
+body .genre-container .genre-swiper-container {
+  margin-top: 20px;
+}
+body .results-swiper-container,
+body .last-releases-swiper-container,
+body .genre-swiper-container {
+  height: 350px;
+  max-width: 1075px;
+  margin: 0px auto;
+  position: relative;
+}
+body .swiper {
+  position: static;
+  width: 100%;
+  height: 100%;
+}
 body .swiper .swiper-slide {
   text-align: center;
   font-size: 18px;
@@ -186,7 +169,7 @@ body .swiper .swiper-slide {
   justify-content: center;
   align-items: center;
 }
-body .swiper .swiper-slide .swiper-slide img {
+body .swiper .swiper-slide img {
   display: block;
   width: 100%;
   height: 100%;
