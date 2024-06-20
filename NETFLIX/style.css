@@ -191,7 +191,7 @@ body .swiper .hover-content .movie-year {
   font-weight: 700;
   line-height: 24.2px;
   text-align: center;
-  color: #B0B0B0;
+  color: #b0b0b0;
   margin: 5px 0;
   padding-top: 23px;
 }
@@ -309,6 +309,7 @@ body .modal_Login .close {
   position: relative;
   top: 15px;
   left: 15px;
+  cursor: pointer;
 }
 body .modal_Login .signup_login {
   display: flex;
@@ -375,12 +376,63 @@ body .modal_Login .input .password #input_password {
   font-weight: 400;
   line-height: 19.36px;
 }
-body .modal_Login .input .password #forgot_password {
+body .modal_Login .input .password .coche {
+  display: flex;
+}
+body .modal_Login .input .password .coche .checkbox {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+body .modal_Login .input .password .coche p {
   font-family: "Inter", sans-serif;
-  font-size: 12px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.36px;
+  padding-left: 10px;
+  margin-bottom: 57px;
+}
+body .modal_Login .container_button_login {
+  display: flex;
+  justify-content: center;
+}
+body .modal_Login .container_button_login .button_login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #cc0000;
+  font-family: "Inria Sans", sans-serif;
+  border-radius: 8px;
+  width: 288px;
+  height: 47px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 23.98px;
+  letter-spacing: 0.03em;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+body .modal_Login .forgot_member {
+  width: 288px;
+  margin: auto;
+}
+body .modal_Login .forgot_member .forgot_password {
+  color: #cc0000;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
   font-weight: 400;
   line-height: 14.52px;
-  margin-left: 149px;
+  cursor: pointer;
+  padding-bottom: 10px;
+}
+body .modal_Login .forgot_member .not_a_member {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.36px;
+}
+body .modal_Login .forgot_member .not_a_member span {
   cursor: pointer;
   color: #cc0000;
 }/*# sourceMappingURL=style.css.map */

@@ -180,19 +180,21 @@ body {
 
     .swiper-slide {
       position: relative;
-  
+
       img {
         display: block;
         width: 100%;
         height: auto;
         transition: opacity 0.3s ease-in-out;
       }
-  
+
       &:hover .hover-content {
         opacity: 1; // Show on hover
       }
     }
 
+    // HOVER
+    
     .hover-content {
       position: absolute;
       top: 0;
@@ -207,7 +209,7 @@ body {
       backdrop-filter: blur(2px);
       opacity: 0; // Initially hidden
       transition: opacity 0.3s ease-in-out;
-  
+
       .movie-title {
         color: #ffffff;
         font-size: 20px;
@@ -217,18 +219,18 @@ body {
         font-weight: 700;
         line-height: 24.2px;
       }
-  
+
       .movie-year {
         font-family: $inter;
         font-size: 20px;
         font-weight: 700;
         line-height: 24.2px;
         text-align: center;
-        color: #B0B0B0;
+        color: #b0b0b0;
         margin: 5px 0;
         padding-top: 23px;
       }
-  
+
       .movie-genres {
         color: #ffffff;
         font-size: 14px;
@@ -239,20 +241,20 @@ body {
         line-height: 16.94px;
         padding-top: 23px;
       }
-  
+
       .star-rating {
         display: flex;
         align-items: center;
         flex-direction: column;
         margin-top: 20px;
-  
+
         .star {
           width: 35px;
           height: 40px;
           margin-right: 5px;
           padding-bottom: 10px;
         }
-  
+
         span {
           color: $colorRed; // Red color for rating
           font-family: $inter;
@@ -289,7 +291,7 @@ body {
       content: "";
     }
   }
-
+  // FOOTER
   .footer {
     font-family: $inria;
     display: flex;
@@ -339,7 +341,7 @@ body {
       color: #b8b8b8;
     }
   }
-
+  // BACKGROUND MODAL TRANSPARENT
   .overlay_modal {
     display: none;
     width: 100%;
@@ -349,7 +351,7 @@ body {
     justify-content: center;
     align-items: center;
   }
-
+  // MODAL
   .modal_Login {
     display: none;
     width: 410px;
@@ -361,6 +363,7 @@ body {
       position: relative;
       top: 15px;
       left: 15px;
+      cursor: pointer;
     }
 
     .signup_login {
@@ -433,13 +436,68 @@ body {
           font-weight: 400;
           line-height: 19.36px;
         }
+        .coche {
+          display: flex;
+          .checkbox {
+            width: 18px;
+            height: 18px;
+            border-radius: 4px; // le border ne s'applique pas
+            cursor: pointer;
+          }
 
-        #forgot_password {
-          font-family: $inter;
-          font-size: 12px;
-          font-weight: 400;
-          line-height: 14.52px;
-          margin-left: 149px;
+          p {
+            font-family: $inter;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 19.36px;
+            padding-left: 10px;
+            margin-bottom: 57px;
+          }
+        }
+      }
+    }
+    .container_button_login {
+      display: flex;
+      justify-content: center;
+
+      .button_login {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $colorRed;
+        font-family: $inria;
+        border-radius: 8px;
+        width: 288px;
+        height: 47px;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 23.98px;
+        letter-spacing: 0.03em;
+        margin-bottom: 30px;
+        cursor: pointer;
+      }
+    }
+
+    .forgot_member {
+      width: 288px;
+      margin: auto;
+
+      .forgot_password {
+        color: $colorRed;
+        font-family: $inter;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 14.52px;
+        cursor: pointer;
+        padding-bottom: 10px;
+      }
+      .not_a_member {
+        font-family: $inter;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19.36px;
+
+        span {
           cursor: pointer;
           color: $colorRed;
         }

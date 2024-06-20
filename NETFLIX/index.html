@@ -51,6 +51,7 @@
             <!-- Exemple de swiper-slide avec contenu -->
             <div class="swiper-slide">
               <img src="image_BeMovie/test-image.png" alt="Movie Poster" />
+              <!-- Hover pour film -->
               <div class="hover-content">
                 <h1 class="movie-title">Tokyo Godfathers</h1>
                 <p class="movie-year">2003</p>
@@ -65,6 +66,7 @@
                 </div>
               </div>
             </div>
+
             <!-- Autres swiper-slide -->
             <div class="swiper-slide">
               <img src="image_BeMovie/test-image.png" alt="" />
@@ -142,20 +144,13 @@
       <div class="barre"></div>
 
       <!-- Swiper Genre / Catégorie -->
+
       <div class="genre-swiper-container">
         <p class="genre-p">Genre</p>
         <div class="swiper mySwiper genre-swiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
               <img src="image_BeMovie/test-image.png" alt="" />
-              <div class="overlay-content">
-                <h3 class="movie-title">Movie Title</h3>
-                <img
-                  src="image_BeMovie/hover_image.png"
-                  alt="Icon"
-                  class="movie-icon"
-                />
-              </div>
             </div>
             <div class="swiper-slide">
               <img src="image_BeMovie/test-image.png" alt="" />
@@ -181,7 +176,7 @@
         </div>
       </div>
     </section>
-
+    <!-- footer -->
     <footer>
       <div class="footer">
         <div class="logo"><span id="logo_red">BE</span>MOVIES</div>
@@ -197,6 +192,7 @@
     </footer>
 
     <!-- Modal Login / Sign Up -->
+
     <div class="overlay_modal"></div>
     <div class="modal_Login">
       <div class="close">
@@ -211,7 +207,7 @@
         <div class="password">
           <input type="password" id="input_password" placeholder="Password" />
           <div class="coche">
-            <input type="checkbox" />
+            <input class="checkbox" type="checkbox" />
             <p>Remember me</p>
           </div>
         </div>
@@ -220,8 +216,11 @@
       <div class="container_button_login">
         <div class="button_login">LOGIN</div>
       </div>
-      <p class="forgot_password">I forgot my password</p>
-      <p class="not_a_member">Not a member yet ? <span>Sign up</span></p>
+
+      <div class="forgot_member">
+        <div class="forgot_password">I forgot my password</div>
+        <div class="not_a_member"><p>Not a member yet ? <span>Sign up</span></p></div>
+      </div>
     </div>
 
     <!-- Swiper JS -->
