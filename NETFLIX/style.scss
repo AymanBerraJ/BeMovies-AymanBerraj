@@ -92,8 +92,8 @@ body {
       height: 44px;
       padding-left: 18px;
       font-size: 16px;
-      border-radius: 8px 0px 0px 8px;
-      box-shadow: 4px 8px 20px 0px rgba(0, 0, 0, 0.1);
+      border-radius: 8px 0 0 8px;
+      box-shadow: 4px 8px 20px 0 rgba(0, 0, 0, 0.1);
     }
 
     #button_search {
@@ -104,7 +104,7 @@ body {
       width: 44px;
       height: 44px;
       cursor: pointer;
-      box-shadow: 4px 8px 20px 0px rgba(0, 0, 0, 0.1);
+      box-shadow: 4px 8px 20px 0 rgba(0, 0, 0, 0.1);
       border-radius: 0 8px 8px 0;
 
       &:hover {
@@ -122,7 +122,7 @@ body {
   .last-releases-swiper-container {
     height: 350px;
     max-width: 1075px;
-    margin: 0px auto;
+    margin: 0 auto;
     position: relative;
   }
 
@@ -168,7 +168,7 @@ body {
       width: 599px;
       height: 2px;
       background-color: white;
-      margin: 0px 243px;
+      margin: 0 243px;
       margin-bottom: 29px;
     }
   }
@@ -213,7 +213,6 @@ body {
       .movie-title {
         color: #ffffff;
         font-size: 20px;
-        // margin: 5px 0;
         text-align: center;
         font-family: $inter;
         font-weight: 700;
@@ -291,6 +290,7 @@ body {
       content: "";
     }
   }
+
   // FOOTER
   .footer {
     font-family: $inria;
@@ -341,28 +341,37 @@ body {
       color: #b8b8b8;
     }
   }
+
   // BACKGROUND MODAL TRANSPARENT
   .overlay_modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
     display: none;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
+
   // MODAL
   .modal_Login {
     display: none;
-    width: 410px;
-    height: 610px;
     background-color: black;
     color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 410px;
+    height: 610px;
+    z-index: 11;
 
     .close {
       position: relative;
       top: 15px;
       left: 15px;
+      width: 15px;
       cursor: pointer;
     }
 
@@ -385,7 +394,7 @@ body {
         font-weight: 700;
         line-height: 28.78px;
         letter-spacing: 0.03em;
-        border-radius: 8px 0px 0px 8px;
+        border-radius: 8px 0 0 8px;
       }
 
       .login {
@@ -400,7 +409,37 @@ body {
         font-weight: 700;
         line-height: 28.78px;
         letter-spacing: 0.03em;
-        border-radius: 0px 8px 8px 0px;
+        border-radius: 0 8px 8px 0;
+      }
+
+      .click_red {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: $inria;
+        background-color: $colorRed;
+        width: 146px;
+        height: 54px;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 28.78px;
+        letter-spacing: 0.03em;
+        border-radius: 8px 0 0 8px;
+      }
+
+      .click_black {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: $inria;
+        border: 1px solid white;
+        width: 146px;
+        height: 54px;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 28.78px;
+        letter-spacing: 0.03em;
+        border-radius: 0 8px 8px 0;
       }
     }
 

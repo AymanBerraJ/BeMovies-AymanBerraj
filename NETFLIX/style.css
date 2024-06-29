@@ -75,8 +75,8 @@ body .search_movie #search_input {
   height: 44px;
   padding-left: 18px;
   font-size: 16px;
-  border-radius: 8px 0px 0px 8px;
-  box-shadow: 4px 8px 20px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 8px 0 0 8px;
+  box-shadow: 4px 8px 20px 0 rgba(0, 0, 0, 0.1);
 }
 body .search_movie #button_search {
   display: flex;
@@ -86,7 +86,7 @@ body .search_movie #button_search {
   width: 44px;
   height: 44px;
   cursor: pointer;
-  box-shadow: 4px 8px 20px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 8px 20px 0 rgba(0, 0, 0, 0.1);
   border-radius: 0 8px 8px 0;
 }
 body .search_movie #button_search:hover {
@@ -97,7 +97,7 @@ body .results-swiper-container,
 body .last-releases-swiper-container {
   height: 350px;
   max-width: 1075px;
-  margin: 0px auto;
+  margin: 0 auto;
   position: relative;
 }
 body .genre-container {
@@ -138,7 +138,7 @@ body .genre-container .barre {
   width: 599px;
   height: 2px;
   background-color: white;
-  margin: 0px 243px;
+  margin: 0 243px;
   margin-bottom: 29px;
 }
 body .swiper {
@@ -287,25 +287,32 @@ body .footer .back-right {
   color: #b8b8b8;
 }
 body .overlay_modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
   display: none;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 body .modal_Login {
   display: none;
-  width: 410px;
-  height: 610px;
   background-color: black;
   color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 410px;
+  height: 610px;
+  z-index: 11;
 }
 body .modal_Login .close {
   position: relative;
   top: 15px;
   left: 15px;
+  width: 15px;
   cursor: pointer;
 }
 body .modal_Login .signup_login {
@@ -327,7 +334,7 @@ body .modal_Login .signup_login .signup {
   font-weight: 700;
   line-height: 28.78px;
   letter-spacing: 0.03em;
-  border-radius: 8px 0px 0px 8px;
+  border-radius: 8px 0 0 8px;
 }
 body .modal_Login .signup_login .login {
   display: flex;
@@ -341,7 +348,35 @@ body .modal_Login .signup_login .login {
   font-weight: 700;
   line-height: 28.78px;
   letter-spacing: 0.03em;
-  border-radius: 0px 8px 8px 0px;
+  border-radius: 0 8px 8px 0;
+}
+body .modal_Login .signup_login .click_red {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Inria Sans", sans-serif;
+  background-color: #cc0000;
+  width: 146px;
+  height: 54px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28.78px;
+  letter-spacing: 0.03em;
+  border-radius: 8px 0 0 8px;
+}
+body .modal_Login .signup_login .click_black {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Inria Sans", sans-serif;
+  border: 1px solid white;
+  width: 146px;
+  height: 54px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28.78px;
+  letter-spacing: 0.03em;
+  border-radius: 0 8px 8px 0;
 }
 body .modal_Login .input {
   margin: auto;
