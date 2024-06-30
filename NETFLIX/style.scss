@@ -161,6 +161,19 @@ body {
             background-color: $colorRed;
           }
         }
+
+        .selected{
+          font-family: $inter;
+          background-color: $colorRed;
+          color: white;
+          border-radius: 8px;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 19.36px;
+          list-style: none;
+          padding: 7px 8px;
+          cursor: pointer;
+        }
       }
     }
 

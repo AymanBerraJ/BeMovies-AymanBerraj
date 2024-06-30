@@ -56,69 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const swiperWrapper = document.querySelector(".swiper-wrapper");
       swiperWrapper.innerHTML = ""; // Clear previous slides
 
-      data.results.forEach((element) => {
-        const title = element.title;
-        const image = element.poster_path;
-        const rating = element.vote_average;
-        const year = element.release_date.split("-")[0];
-        console.log(image);
-
-        // Vérification de l'image
-        if (!image) {
-          console.error(`Image not found for ${title}`);
-          return;
-        }
-
-        // Création des éléments
-        const swiperSlide = document.createElement("div");
-        swiperSlide.classList.add("swiper-slide");
-
-        const img = document.createElement("img");
-        img.src = `https://image.tmdb.org/t/p/w500${image}`;
-        img.alt = title;
-
-        const hoverContent = document.createElement("div");
-        hoverContent.classList.add("hover-content");
-
-        const movieTitle = document.createElement("h1");
-        movieTitle.classList.add("movie-title");
-        movieTitle.textContent = title;
-
-        const movieYear = document.createElement("p");
-        movieYear.classList.add("movie-year");
-        movieYear.textContent = year;
-
-        const movieGenres = document.createElement("p");
-        movieGenres.classList.add("movie-genres");
-        movieGenres.textContent = "Genre info"; // Remplacez par les genres réels si disponibles
-
-        const starRating = document.createElement("div");
-        starRating.classList.add("star-rating");
-
-        const starImg = document.createElement("img");
-        starImg.classList.add("star");
-        starImg.src = "image_BeMovie/hover_image.png";
-        starImg.alt = "Star Icon";
-
-        const ratingSpan = document.createElement("span");
-        ratingSpan.textContent = rating;
-
-        starRating.appendChild(starImg);
-        starRating.appendChild(ratingSpan);
-
-        hoverContent.appendChild(movieTitle);
-        hoverContent.appendChild(movieYear);
-        hoverContent.appendChild(movieGenres);
-        hoverContent.appendChild(starRating);
-
-        swiperSlide.appendChild(img);
-        swiperSlide.appendChild(hoverContent);
-
-        if (swiperWrapper) {
-          swiperWrapper.appendChild(swiperSlide);
-        } else {
-          console.error("Swiper wrapper not found");
-        }
+      data.results.forEach((movie) => {
+        slideMovie(movie, swiperWrapper);
       });
 
       initializeSwiper();
@@ -131,7 +70,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   async function movieGenre() {
-    let currentDate = new Date().toISOString().slice(0, 10);
+    const selected = document.querySelector(".selected");
+    const valueGenres = selected.textContent;
+    let currentId;
     const options = {
       method: "GET",
       headers: {
@@ -141,9 +82,11 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     try {
+      const genresJson = await getGenres();
+      const result = genresJson.find((item) => item.name === valueGenres);
+      currentId = result ? result.id : null;
       const response = await fetch(
-        `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${currentDate}`,
-
+        `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${currentId}`,
         options
       );
 
@@ -152,8 +95,14 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       const data = await response.json();
+      const swiperWrapper = document.getElementById('genre'); 
+      swiperWrapper.innerHTML = "";
+      data.results.forEach((movie) => {
+        slideMovie(movie, swiperWrapper);
+      });
 
-      console.log(data.results);
+      initializeSwiper();
+
     } catch (error) {
       console.error(
         "There has been a problem with your fetch operation:",
@@ -176,15 +125,19 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const response = await fetch(
         `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&primary_release_date.lte=${currentDate}&sort_by=popularity.desc`,
-
         options
       );
-
+      // ptit bug date 2024/2015
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
 
       const data = await response.json();
+      const wrapperL = document.getElementById("latest");
+      data.results.forEach((movie) => {
+        slideMovie(movie, wrapperL);
+      });
+      initializeSwiper();
 
       console.log(data.results);
     } catch (error) {
@@ -274,4 +227,111 @@ document.addEventListener("DOMContentLoaded", () => {
       blackRed.classList.add("click_red");
     });
   });
+
+  function slideMovie(movie, swiper) {
+    const title = movie.title;
+    const image = movie.poster_path;
+    const rating = Math.floor(movie.vote_average);
+    const year = movie.release_date.split("-")[0];
+    const genres = movie.genre_ids;
+
+    // Vérification de l'image
+    if (!image) {
+      console.error(`Image not found for ${title}`);
+      return;
+    }
+
+    // Création des éléments
+    const swiperSlide = document.createElement("div");
+    swiperSlide.classList.add("swiper-slide");
+
+    const img = document.createElement("img");
+    img.src = `https://image.tmdb.org/t/p/w500${image}`;
+    img.alt = title;
+
+    const hoverContent = document.createElement("div");
+    hoverContent.classList.add("hover-content");
+
+    const movieTitle = document.createElement("h1");
+    movieTitle.classList.add("movie-title");
+    movieTitle.textContent = title;
+
+    const movieYear = document.createElement("p");
+    movieYear.classList.add("movie-year");
+    movieYear.textContent = year;
+
+    const movieGenres = document.createElement("p");
+    movieGenres.classList.add("movie-genres");
+    getGenres().then((genresJson) => {
+      genres.forEach((genreId) => {
+        const result = genresJson.find((item) => item.id === genreId);
+        const genreTxt = result ? result.name : null;
+        movieGenres.textContent += `${genreTxt} `;
+      });
+    });
+
+    const starRating = document.createElement("div");
+    starRating.classList.add("star-rating");
+
+    const starImg = document.createElement("img");
+    starImg.classList.add("star");
+    starImg.src = "image_BeMovie/hover_image.png";
+    starImg.alt = "Star Icon";
+
+    const ratingSpan = document.createElement("span");
+    ratingSpan.textContent = rating;
+
+    starRating.appendChild(starImg);
+    starRating.appendChild(ratingSpan);
+
+    hoverContent.appendChild(movieTitle);
+    hoverContent.appendChild(movieYear);
+    hoverContent.appendChild(movieGenres);
+    hoverContent.appendChild(starRating);
+
+    swiperSlide.appendChild(img);
+    swiperSlide.appendChild(hoverContent);
+
+    swiper.appendChild(swiperSlide);
+  }
+
+  async function getGenres() {
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `${KeyAPI}`,
+      },
+    };
+
+    try {
+      const response = await fetch(
+        "https://api.themoviedb.org/3/genre/movie/list?language=en",
+        options
+      );
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      return data.genres;
+    } catch (error) {
+      console.error(
+        "There has been a problem with your fetch operation:",
+        error
+      );
+    }
+  }
+
+  const listSelected = document.querySelectorAll(".genre-list-item");
+
+  listSelected.forEach((item) => {
+    item.addEventListener("click", () => {
+      listSelected.forEach((element) => element.classList.remove("selected"));
+      item.classList.add("selected");
+      movieGenre();
+    });
+  });
+
 });
