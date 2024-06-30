@@ -22,7 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
   btnSearch.addEventListener('click', () => {
     const input = document.getElementById('search_input');
     const valueInput = input.value;
+    const p = document.querySelector('.genre-p');
 
+    // quand il n'y a rien rien afficher
+    
+      p.textContent = `The results of " ${valueInput} "`;
     movieFetch(valueInput);
   });
 
