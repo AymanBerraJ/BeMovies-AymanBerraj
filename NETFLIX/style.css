@@ -92,6 +92,9 @@ body .search_movie #button_search {
 body .search_movie #button_search:hover {
   background-color: #8b0000;
 }
+body .results_search {
+  display: none;
+}
 body .genre-swiper-container,
 body .results-swiper-container,
 body .last-releases-swiper-container {

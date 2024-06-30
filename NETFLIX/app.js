@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzODhiY2JlZTA2MjU5ZTM5ZDk0MDYzZmFkNzA4MDcxOCIsInN1YiI6IjY2NzRiYWFmNDliYTg0NjRkOTI4ZDcwYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9iCwoQA6MtVdLB8KE7DSP9PJivT4SAO_qD_LcygYjdA";
 
   const btnSearch = document.getElementById("button_search");
-
+  
   btnSearch.addEventListener("click", () => {
     const input = document.getElementById("search_input");
     const valueInput = input.value;
@@ -29,6 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     p.textContent = `The results of " ${valueInput} "`;
     movieFetch(valueInput);
+    const resultSearch = document.querySelector('.results_search');
+    resultSearch.style.display = 'block';
   });
 
   // fetch movie actual
