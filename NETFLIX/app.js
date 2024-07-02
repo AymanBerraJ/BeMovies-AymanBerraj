@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzODhiY2JlZTA2MjU5ZTM5ZDk0MDYzZmFkNzA4MDcxOCIsInN1YiI6IjY2NzRiYWFmNDliYTg0NjRkOTI4ZDcwYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9iCwoQA6MtVdLB8KE7DSP9PJivT4SAO_qD_LcygYjdA";
 
   const btnSearch = document.getElementById("button_search");
-  
+
   btnSearch.addEventListener("click", () => {
     const input = document.getElementById("search_input");
     const valueInput = input.value;
@@ -29,18 +29,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     p.textContent = `The results of " ${valueInput} "`;
     movieFetch(valueInput);
-    const resultSearch = document.querySelector('.results_search');
-    resultSearch.style.display = 'block';
+    const resultSearch = document.querySelector(".results_search");
+    resultSearch.style.display = "block";
   });
 
   // fetch movie actual
   async function movieFetch(research) {
     const options = {
-        method: "GET",
-        headers: {
-            accept: "application/json",
-            Authorization: `${KeyAPI}`,
-        },
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `${KeyAPI}`,
+      },
     };
 
     try {
@@ -76,11 +76,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const valueGenres = selected.textContent;
     let currentId;
     const options = {
-        method: "GET",
-        headers: {
-            accept: "application/json",
-            Authorization: `${KeyAPI}`,
-        },
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `${KeyAPI}`,
+      },
     };
 
     try {
@@ -97,14 +97,13 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       const data = await response.json();
-      const swiperWrapper = document.getElementById('genre'); 
+      const swiperWrapper = document.getElementById("genre");
       swiperWrapper.innerHTML = "";
       data.results.forEach((movie) => {
         slideMovie(movie, swiperWrapper);
       });
 
       initializeSwiper();
-
     } catch (error) {
       console.error(
         "There has been a problem with your fetch operation:",
@@ -114,14 +113,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   movieGenre();
 
-async function movieLatest() {
+  async function movieLatest() {
     const currentDate = new Date().toISOString().slice(0, 10);
     const options = {
-        method: "GET",
-        headers: {
-            accept: "application/json",
-            Authorization: `${KeyAPI}`,
-        },
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `${KeyAPI}`,
+      },
     };
 
     try {
@@ -324,7 +323,7 @@ async function movieLatest() {
         error
       );
     }
-}
+  }
 
   const listSelected = document.querySelectorAll(".genre-list-item");
 
@@ -335,5 +334,4 @@ async function movieLatest() {
       movieGenre();
     });
   });
-
 });
