@@ -161,6 +161,19 @@ body {
             background-color: $colorRed;
           }
         }
+
+        .selected{
+          font-family: $inter;
+          background-color: $colorRed;
+          color: white;
+          border-radius: 8px;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 19.36px;
+          list-style: none;
+          padding: 7px 8px;
+          cursor: pointer;
+        }
       }
     }
 
@@ -352,6 +365,13 @@ body {
     height: 100vh;
     z-index: 10;
     display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    z-index: 10;
   }
 
   // MODAL

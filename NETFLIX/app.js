@@ -1,116 +1,40 @@
-const KeyAPI = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzODhiY2JlZTA2MjU5ZTM5ZDk0MDYzZmFkNzA4MDcxOCIsInN1YiI6IjY2NzRiYWFmNDliYTg0NjRkOTI4ZDcwYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9iCwoQA6MtVdLB8KE7DSP9PJivT4SAO_qD_LcygYjdA";
+document.addEventListener("DOMContentLoaded", () => {
+  let swiper;
 
-// fetch movie actual
-const btnSearch = document.querySelector('.button_search');
-if (btnSearch) {
-    btnSearch.addEventListener('click', () => {
-        const input = document.getElementById("search_input");
-        const valueInput = input.value;
-        btnSearch.style.display = 'block';
-
-        if (valueInput) {
-            const newUrl = new URL(window.location.href);
-            newUrl.searchParams.set('query', valueInput);
-            window.history.pushState({ path: newUrl.href }, '', newUrl.href);
-
-            movieFetch(valueInput);
-        }
+  function initializeSwiper() {
+    swiper = new Swiper(".mySwiper", {
+      slidesPerView: 4,
+      spaceBetween: 20,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+        clickable: true,
+      },
     });
-}
+  }
 
-// Fonction pour afficher les résultats
-function displayResults(results) {
-    const resultsContainer = document.querySelector('.results_search .swiper-wrapper');
-    resultsContainer.innerHTML = '';
+  initializeSwiper();
 
-    results.forEach(movie => {
-        const slide = document.createElement('div');
-        slide.classList.add('swiper-slide');
+  const KeyAPI =
+    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzODhiY2JlZTA2MjU5ZTM5ZDk0MDYzZmFkNzA4MDcxOCIsInN1YiI6IjY2NzRiYWFmNDliYTg0NjRkOTI4ZDcwYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9iCwoQA6MtVdLB8KE7DSP9PJivT4SAO_qD_LcygYjdA";
 
-        const img = document.createElement('img');
-        img.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-        img.alt = movie.title;
+  const btnSearch = document.getElementById("button_search");
+  
+  btnSearch.addEventListener("click", () => {
+    const input = document.getElementById("search_input");
+    const valueInput = input.value;
+    const p = document.querySelector(".genre-p");
 
-        const hoverContent = document.createElement('div');
-        hoverContent.classList.add('hover-content');
+    // quand il n'y a rien rien afficher
 
-        const title = document.createElement('h1');
-        title.classList.add('movie-title');
-        title.textContent = movie.title;
+    p.textContent = `The results of " ${valueInput} "`;
+    movieFetch(valueInput);
+    const resultSearch = document.querySelector('.results_search');
+    resultSearch.style.display = 'block';
+  });
 
-        const year = document.createElement('p');
-        year.classList.add('movie-year');
-        year.textContent = new Date(movie.release_date).getFullYear();
-
-        const genres = document.createElement('p');
-        genres.classList.add('movie-genres');
-        genres.textContent = movie.genre_ids.join('/');
-
-        const rating = document.createElement('div');
-        rating.classList.add('star-rating');
-        const starImg = document.createElement('img');
-        starImg.classList.add('star');
-        starImg.src = "image_BeMovie/hover_image.png";
-        starImg.alt = "Star Icon";
-        const ratingSpan = document.createElement('span');
-        ratingSpan.textContent = movie.vote_average;
-
-        rating.appendChild(starImg);
-        rating.appendChild(ratingSpan);
-
-        hoverContent.appendChild(title);
-        hoverContent.appendChild(year);
-        hoverContent.appendChild(genres);
-        hoverContent.appendChild(rating);
-
-        slide.appendChild(img);
-        slide.appendChild(hoverContent);
-
-        resultsContainer.appendChild(slide);
-    });
-
-    // Reinitialise le swiper pour inclure les nouvelles slides
-    new Swiper('.mySwiper', {
-        slidesPerView: 4,
-        spaceBetween: 20,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-            clickable: true,
-        },
-    });
-}
-
-async function movieFetch(research = '') {
-    const options = {
-        method: "GET",
-        headers: {
-            accept: "application/json",
-            Authorization: `${KeyAPI}`,
-        },
-    };
-
-    const url = research
-        ? `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(research)}&include_adult=false&language=en-US&page=1`
-        : `https://api.themoviedb.org/3/movie/popular?language=en-US&page=1`;
-
-    try {
-        const response = await fetch(url, options);
-
-        if (!response.ok) {
-            throw new Error("Network response was not ok");
-        }
-
-        const data = await response.json();
-        displayResults(data.results);
-    } catch (error) {
-        console.error("There has been a problem with your fetch operation:", error);
-    }
-}
-
-movieFetch();
-
-async function movieGenre(genre = '') {
+  // fetch movie actual
+  async function movieFetch(research) {
     const options = {
         method: "GET",
         headers: {
@@ -120,22 +44,75 @@ async function movieGenre(genre = '') {
     };
 
     try {
-        const response = await fetch(
-            `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${genre}`,
-            options
-        );
+      const response = await fetch(
+        `https://api.themoviedb.org/3/search/movie?query=${research}&include_adult=false&language=en-US&page=1`,
+        options
+      );
 
-        if (!response.ok) {
-            throw new Error("Network response was not ok");
-        }
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
 
-        const data = await response.json();
-        console.log(data.results);
+      const data = await response.json();
+      console.log(data);
+      const swiperWrapper = document.querySelector(".swiper-wrapper");
+      swiperWrapper.innerHTML = ""; // Clear previous slides
+
+      data.results.forEach((movie) => {
+        slideMovie(movie, swiperWrapper);
+      });
+
+      initializeSwiper();
     } catch (error) {
-        console.error("There has been a problem with your fetch operation:", error);
+      console.error(
+        "There has been a problem with your fetch operation:",
+        error
+      );
     }
-}
-movieGenre();
+  }
+
+  async function movieGenre() {
+    const selected = document.querySelector(".selected");
+    const valueGenres = selected.textContent;
+    let currentId;
+    const options = {
+        method: "GET",
+        headers: {
+            accept: "application/json",
+            Authorization: `${KeyAPI}`,
+        },
+    };
+
+    try {
+      const genresJson = await getGenres();
+      const result = genresJson.find((item) => item.name === valueGenres);
+      currentId = result ? result.id : null;
+      const response = await fetch(
+        `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${currentId}`,
+        options
+      );
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      const swiperWrapper = document.getElementById('genre'); 
+      swiperWrapper.innerHTML = "";
+      data.results.forEach((movie) => {
+        slideMovie(movie, swiperWrapper);
+      });
+
+      initializeSwiper();
+
+    } catch (error) {
+      console.error(
+        "There has been a problem with your fetch operation:",
+        error
+      );
+    }
+  }
+  movieGenre();
 
 async function movieLatest() {
     const currentDate = new Date().toISOString().slice(0, 10);
@@ -148,109 +125,215 @@ async function movieLatest() {
     };
 
     try {
-        const response = await fetch(
-            `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&primary_release_date.lte=${currentDate}&sort_by=popularity.desc`,
-            options
-        );
+      const response = await fetch(
+        `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&primary_release_date.lte=${currentDate}&sort_by=popularity.desc`,
+        options
+      );
+      // ptit bug date 2024/2015
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
 
-        if (!response.ok) {
-            throw new Error("Network response was not ok");
-        }
+      const data = await response.json();
+      const wrapperL = document.getElementById("latest");
+      data.results.forEach((movie) => {
+        slideMovie(movie, wrapperL);
+      });
+      initializeSwiper();
 
-        const data = await response.json();
-        console.log(data.results);
+      console.log(data.results);
     } catch (error) {
-        console.error("There has been a problem with your fetch operation:", error);
+      console.error(
+        "There has been a problem with your fetch operation:",
+        error
+      );
+    }
+  }
+
+  movieLatest();
+
+  const btnModalLogin = document.querySelector(".modal-logSign");
+  const btnModalRegister = document.querySelector(".modal-register");
+  const overlay = document.querySelector(".overlay_modal");
+  const modalLog = document.querySelector(".modal_Login");
+  const redBlack = document.getElementById("btn_red");
+  const blackRed = document.getElementById("btn_black");
+
+  // Modal Bouton Login / Register
+  btnModalLogin.addEventListener("click", () => {
+    overlay.style.display = "block";
+    modalLog.style.display = "block";
+    redBlack.classList.add("login");
+    redBlack.classList.remove("click_black");
+    blackRed.classList.add("signup");
+    blackRed.classList.remove("click_red");
+
+    const closeModal = document.getElementById("close_button");
+    if (closeModal) {
+      closeModal.addEventListener("click", () => {
+        overlay.style.display = "none";
+        modalLog.style.display = "none";
+      });
+    }
+
+    overlay.addEventListener("click", () => {
+      overlay.style.display = "none";
+      modalLog.style.display = "none";
+    });
+
+    blackRed.addEventListener("click", () => {
+      redBlack.classList.add("click_black");
+      redBlack.classList.remove("login");
+      blackRed.classList.remove("signup");
+      blackRed.classList.add("click_red");
+    });
+    redBlack.addEventListener("click", () => {
+      redBlack.classList.add("login");
+      redBlack.classList.remove("click_black");
+      blackRed.classList.add("signup");
+      blackRed.classList.remove("click_red");
+    });
+  });
+
+  btnModalRegister.addEventListener("click", () => {
+    overlay.style.display = "block";
+    modalLog.style.display = "block";
+    redBlack.classList.add("click_black");
+    redBlack.classList.remove("login");
+    blackRed.classList.remove("signup");
+    blackRed.classList.add("click_red");
+
+    const closeModal = document.getElementById("close_button");
+    if (closeModal) {
+      closeModal.addEventListener("click", () => {
+        overlay.style.display = "none";
+        modalLog.style.display = "none";
+      });
+    }
+
+    overlay.addEventListener("click", () => {
+      overlay.style.display = "none";
+      modalLog.style.display = "none";
+    });
+
+    redBlack.addEventListener("click", () => {
+      redBlack.classList.add("login");
+      redBlack.classList.remove("click_black");
+      blackRed.classList.add("signup");
+      blackRed.classList.remove("click_red");
+    });
+    blackRed.addEventListener("click", () => {
+      redBlack.classList.add("click_black");
+      redBlack.classList.remove("login");
+      blackRed.classList.remove("signup");
+      blackRed.classList.add("click_red");
+    });
+  });
+
+  function slideMovie(movie, swiper) {
+    const title = movie.title;
+    const image = movie.poster_path;
+    const rating = Math.floor(movie.vote_average);
+    const year = movie.release_date.split("-")[0];
+    const genres = movie.genre_ids;
+
+    // Vérification de l'image
+    if (!image) {
+      console.error(`Image not found for ${title}`);
+      return;
+    }
+
+    // Création des éléments
+    const swiperSlide = document.createElement("div");
+    swiperSlide.classList.add("swiper-slide");
+
+    const img = document.createElement("img");
+    img.src = `https://image.tmdb.org/t/p/w500${image}`;
+    img.alt = title;
+
+    const hoverContent = document.createElement("div");
+    hoverContent.classList.add("hover-content");
+
+    const movieTitle = document.createElement("h1");
+    movieTitle.classList.add("movie-title");
+    movieTitle.textContent = title;
+
+    const movieYear = document.createElement("p");
+    movieYear.classList.add("movie-year");
+    movieYear.textContent = year;
+
+    const movieGenres = document.createElement("p");
+    movieGenres.classList.add("movie-genres");
+    getGenres().then((genresJson) => {
+      genres.forEach((genreId) => {
+        const result = genresJson.find((item) => item.id === genreId);
+        const genreTxt = result ? result.name : null;
+        movieGenres.textContent += `${genreTxt} `;
+      });
+    });
+
+    const starRating = document.createElement("div");
+    starRating.classList.add("star-rating");
+
+    const starImg = document.createElement("img");
+    starImg.classList.add("star");
+    starImg.src = "image_BeMovie/hover_image.png";
+    starImg.alt = "Star Icon";
+
+    const ratingSpan = document.createElement("span");
+    ratingSpan.textContent = rating;
+
+    starRating.appendChild(starImg);
+    starRating.appendChild(ratingSpan);
+
+    hoverContent.appendChild(movieTitle);
+    hoverContent.appendChild(movieYear);
+    hoverContent.appendChild(movieGenres);
+    hoverContent.appendChild(starRating);
+
+    swiperSlide.appendChild(img);
+    swiperSlide.appendChild(hoverContent);
+
+    swiper.appendChild(swiperSlide);
+  }
+
+  async function getGenres() {
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `${KeyAPI}`,
+      },
+    };
+
+    try {
+      const response = await fetch(
+        "https://api.themoviedb.org/3/genre/movie/list?language=en",
+        options
+      );
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      return data.genres;
+    } catch (error) {
+      console.error(
+        "There has been a problem with your fetch operation:",
+        error
+      );
     }
 }
 
-movieLatest();
+  const listSelected = document.querySelectorAll(".genre-list-item");
 
-const btnModalLogin = document.querySelector(".modal-logSign");
-const btnModalRegister = document.querySelector(".modal-register");
-const overlay = document.querySelector(".overlay_modal");
-const modalLog = document.querySelector(".modal_Login");
-const redBlack = document.getElementById("btn_red");
-const blackRed = document.getElementById("btn_black");
-
-// Modal Bouton Login / Register
-    btnModalLogin.addEventListener("click", () => {
-        overlay.style.display = "block";
-        modalLog.style.display = "block";
-        redBlack.classList.add("login");
-        redBlack.classList.remove("click_black");
-        blackRed.classList.add("signup");
-        blackRed.classList.remove("click_red");
-
-        const closeModal = document.getElementById("close_button");
-        if (closeModal) {
-            closeModal.addEventListener("click", () => {
-                overlay.style.display = "none";
-                modalLog.style.display = "none";
-            });
-        }
-
-        overlay.addEventListener("click", () => {
-            overlay.style.display = "none";
-            modalLog.style.display = "none";
-        });
-
-        blackRed.addEventListener("click", () => {
-            redBlack.classList.add("click_black");
-            redBlack.classList.remove("login");
-            blackRed.classList.remove("signup");
-            blackRed.classList.add("click_red");
-        });
-        redBlack.addEventListener("click", () => {
-            redBlack.classList.add("login");
-            redBlack.classList.remove("click_black");
-            blackRed.classList.add("signup");
-            blackRed.classList.remove("click_red");
-        });
+  listSelected.forEach((item) => {
+    item.addEventListener("click", () => {
+      listSelected.forEach((element) => element.classList.remove("selected"));
+      item.classList.add("selected");
+      movieGenre();
     });
+  });
 
-    btnModalRegister.addEventListener("click", () => {
-        overlay.style.display = "block";
-        modalLog.style.display = "block";
-        redBlack.classList.add("click_black");
-        redBlack.classList.remove("login");
-        blackRed.classList.remove("signup");
-        blackRed.classList.add("click_red");
-
-        const closeModal = document.getElementById("close_button");
-        if (closeModal) {
-            closeModal.addEventListener("click", () => {
-                overlay.style.display = "none";
-                modalLog.style.display = "none";
-            });
-        }
-
-        overlay.addEventListener("click", () => {
-            overlay.style.display = "none";
-            modalLog.style.display = "none";
-        });
-
-        redBlack.addEventListener("click", () => {
-            redBlack.classList.add("login");
-            redBlack.classList.remove("click_black");
-            blackRed.classList.add("signup");
-            blackRed.classList.remove("click_red");
-        });
-        blackRed.addEventListener("click", () => {
-            redBlack.classList.add("click_black");
-            redBlack.classList.remove("login");
-            blackRed.classList.remove("signup");
-            blackRed.classList.add("click_red");
-        });
-    });
-
-// Swiper
-new Swiper(".mySwiper", {
-    slidesPerView: 4,
-    spaceBetween: 20,
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-        clickable: true,
-    },
 });
