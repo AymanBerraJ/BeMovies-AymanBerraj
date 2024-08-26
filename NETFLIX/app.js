@@ -236,13 +236,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const year = movie.release_date.split("-")[0];
     const genres = movie.genre_ids;
 
-    // Vérification de l'image
     if (!image) {
-      console.error(`Image not found for ${title}`);
-      return;
+        console.error(`Image not found for ${title}`);
+        return;
     }
 
-    // Création des éléments
     const swiperSlide = document.createElement("div");
     swiperSlide.classList.add("swiper-slide");
 
@@ -264,11 +262,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const movieGenres = document.createElement("p");
     movieGenres.classList.add("movie-genres");
     getGenres().then((genresJson) => {
-      genres.forEach((genreId) => {
-        const result = genresJson.find((item) => item.id === genreId);
-        const genreTxt = result ? result.name : null;
-        movieGenres.textContent += `${genreTxt} `;
-      });
+        genres.forEach((genreId) => {
+            const result = genresJson.find((item) => item.id === genreId);
+            const genreTxt = result ? result.name : null;
+            movieGenres.textContent += `${genreTxt} `;
+        });
     });
 
     const starRating = document.createElement("div");
@@ -294,7 +292,35 @@ document.addEventListener("DOMContentLoaded", () => {
     swiperSlide.appendChild(hoverContent);
 
     swiper.appendChild(swiperSlide);
-  }
+
+    const overlayModal = document.querySelector('.overlay_modal_movie');
+    const modalMovie = document.querySelector('.modal_movie');
+
+    swiperSlide.addEventListener('click', () => {
+        // Remplir la modale avec les informations du film
+        const imgMovie = modalMovie.querySelector('img');
+        imgMovie.src = `https://image.tmdb.org/t/p/w500${image}`;
+        imgMovie.alt = title;
+
+        const titleMovie = modalMovie.querySelector('.title_movie');
+        titleMovie.textContent = title;
+
+        const resumeMovie = modalMovie.querySelector('.resume_movie');
+        resumeMovie.textContent = movie.overview || "No description available.";
+
+        // Afficher la modale
+        overlayModal.style.display = 'block';
+
+        // Gestion du bouton de retour pour fermer la modale
+        const btnReturn = modalMovie.querySelector('.Back_modal');
+        btnReturn.addEventListener('click', () => {
+            overlayModal.style.display = 'none';
+        });
+    });
+}
+
+
+
 
   async function getGenres() {
     const options = {
