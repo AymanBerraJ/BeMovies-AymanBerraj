@@ -528,16 +528,23 @@ body .modal_movie img {
   width: 250px;
   height: 350px;
   border-radius: 10px;
+  border: 1px solid white;
 }
 body .modal_movie .info_movie {
   width: 350px;
 }
 body .modal_movie .info_movie .title_movie {
   font-family: "Inria Sans", sans-serif;
-  color: whitesmoke;
+  color: #8b0000;
   font-size: 28px;
-  padding-bottom: 15px;
+  padding-bottom: 5px;
   text-align: left;
+}
+body .modal_movie .info_movie .date_movie {
+  font-family: "Inria Sans", sans-serif;
+  font-weight: 700;
+  color: white;
+  padding-bottom: 15px;
 }
 body .modal_movie .info_movie .resume_movie {
   font-family: "Inria Sans", sans-serif;

@@ -603,6 +603,7 @@ body {
       width: 250px;
       height: 350px;
       border-radius: 10px;
+      border: 1px solid white;
     }
 
     .info_movie{
@@ -610,10 +611,16 @@ body {
 
       .title_movie{
         font-family: $inria;
-        color: whitesmoke;
+        color: $colorDarkRed;
         font-size: 28px;
-        padding-bottom: 15px;
+        padding-bottom: 5px;
         text-align: left;
+      }
+      .date_movie{
+        font-family: $inria;
+        font-weight: 700;
+        color: white;
+        padding-bottom: 15px;
       }
       .resume_movie{
         font-family: $inria;

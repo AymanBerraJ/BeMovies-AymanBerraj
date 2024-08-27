@@ -305,8 +305,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const titleMovie = modalMovie.querySelector('.title_movie');
         titleMovie.textContent = title;
 
+        const dateMovie = modalMovie.querySelector('.date_movie');
+        dateMovie.textContent = year;
+
         const resumeMovie = modalMovie.querySelector('.resume_movie');
-        resumeMovie.textContent = movie.overview || "No description available.";
+        resumeMovie.textContent = movie.overview || "No description.";
 
         // Afficher la modale
         overlayModal.style.display = 'block';
